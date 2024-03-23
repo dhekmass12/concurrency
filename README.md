@@ -10,3 +10,6 @@ Mereturn sebuah iterator dari lines pada buffer reader
 Membuat sebuah collection dari element-element hasil extract dari buf_reader dimana element tersebut bukan sebuah line kosong
 `println!("Request: {:#?}", http_request);`
 print http_request dengan format yang bagus
+
+# Commit 2 Reflection notes
+![hello from rust]("reflection 2.png" "hello from rust")
