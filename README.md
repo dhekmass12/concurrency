@@ -32,3 +32,5 @@ output 404.html (jika pathnya bukan "/")
 
 # Commit 4 Reflection notes
 Jika /sleep dibuka, maka akan ada jeda waktu 10 detik bagi browser untuk load. Hal ini bisa terjadi karena thread dipaksa untuk sleep selama 10 detik sedangkan server menggunakan single thread, sehingga tidak ada thread lain yang dapat memproses.
+
+# Commit 5 Reflection notes
