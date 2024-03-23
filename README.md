@@ -24,3 +24,8 @@ print http_request dengan format yang bagus
 Split response dilakukan oleh code `buf_reader.lines().next().unwrap().unwrap();`.<br/>
 next() untuk mendapatkan item selanjutnya (pertama) dari `buf_reader.lines()`, yaitu Option<Result<String, Error>>.<br/>
 Karena yang saya inginkan yaitu string dalam Result<String, Error>, maka lakukan unwrap() 2 kali.
+
+Saya melakukan refactoring karena adanya duplicate code pada function `handle_connection()`. Duplicate core merupakan salah satu code smell yang harus dihilangkan. Solusi yang saya lakukan yaitu dengan menghapus code duplikat dan memanfaatkan status_line dan filename yang nilainya dinamis.
+
+output 404.html (jika pathnya bukan "/")
+![404 error page](reflection3.png "404 error page")
