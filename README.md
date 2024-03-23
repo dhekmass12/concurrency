@@ -12,4 +12,4 @@ Membuat sebuah collection dari element-element hasil extract dari buf_reader dim
 print http_request dengan format yang bagus
 
 # Commit 2 Reflection notes
-![hello from rust]("reflection 2.png" "hello from rust")
+![hello from rust](reflection2.png "hello from rust")
