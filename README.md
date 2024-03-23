@@ -34,3 +34,9 @@ output 404.html (jika pathnya bukan "/")
 Jika /sleep dibuka, maka akan ada jeda waktu 10 detik bagi browser untuk load. Hal ini bisa terjadi karena thread dipaksa untuk sleep selama 10 detik sedangkan server menggunakan single thread, sehingga tidak ada thread lain yang dapat memproses.
 
 # Commit 5 Reflection notes
+Thread pool adalah design pattern untuk menjalankan concurrency. Thread pool digunakan untuk memanage worker threads melalui code `workers: Vec<Worker>,`. Threads nantinya akan dieksekusi secara asynchronous sehingga dapat meningkatkan performa web-server. 
+Tasks(jobs) dari main thread akan dikirimkan ke worker threads melalui `sender: mpsc::Sender<Job>`. Fungsi `new(size: usize) -> ThreadPool` pada ThreadPool berguna untuk membuat worker thread dalam thread pool.
+`let (sender, receiver) = mpsc::channel();` membuat tuple sender dan receiver, dengan receiver digunakan oleh worker threads untuk mendapatkan tasks. `let receiver = Arc::new(Mutex::new(receiver));` berguna agar receiver bisa dihare antar worker threads. 
+`let mut workers = Vec::with_capacity(size);<br/>for id in 0..size{<br/>workers.push(Worker::new(id, Arc::clone(&receiver)));<br/>}` berguna untuk membuat workers sebanyak `size` dan tiap worker dimasukkan ke vector `workers`. Terakhir fungsi `new` akan membuat instance `ThreadPool` dengan workers dan sender yang telah dibuat sebelumnya dan mereturn `ThreadPool` tersebut.
+<br/>
+fungsi `execute` berguna untuk mengsubmit sebuah task ke thread pool agar dapat dieksekusi
